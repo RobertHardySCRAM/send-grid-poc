@@ -25,20 +25,28 @@ Here the report that you requested be sent to you from SCRAM Nexus:
 {{reportUrl}}
 ";
             var htmlContent =
- @"<div style=""padding: 8px 16px; margin: 0 0 20px 0; background-color: #06262d; width: 100%;"">
-  <a href=""https://nexus.scramnetwork.com""><img border=""0"" style=""display:block; color:#000000; text-decoration:none; font-family:Helvetica, arial, sans-serif; font-size:16px;"" width=""329"" alt=""SCRAM Nexus"" data-proportionally-constrained=""true"" data-responsive=""false"" src=""https://nexus.scramnetwork.com/images/logo_scram_nexus.png"" height=""50""></a>
-</div>
+ @"
+<table style=""width: 100%; margin: 0;"">
+<tr>
+    <td style=""padding: 8px 16px 8px 16px; background-color: #06262d;"">
+        <a href=""https://nexus.scramnetwork.com""><img border=""0"" style=""color:#fff; text-decoration:none; font-family:Helvetica, arial, sans-serif; font-size:16px;"" width=""329""  height=""50"" alt=""SCRAM Nexus"" src=""https://nexus.scramnetwork.com/images/logo_scram_nexus.png""></a>
+    </td>
+</tr>
+<tr>
+    <td style=""font-family:Helvetica, arial, sans-serif; font-size:16px; padding: 20px;"">
+        <p>
+            Hello {{firsName}} {{lastName}},
+        <p>
 
-<p style=""font-family:Helvetica, arial, sans-serif; font-size:16px;"">
-    Hello {{firsName}} {{lastName}},
-<p>
-
-<p style=""font-family:Helvetica, arial, sans-serif; font-size:16px;"">
-    Here the report that you requested be sent to you from SCRAM Nexus:
-<p>
-<p style=""font-family:Helvetica, arial, sans-serif; font-size:16px;"">
-    <a href=""{{reportUrl}}"">Click here to view the report.</a>
-</p>
+        <p>
+            Here the report that you requested be sent to you from SCRAM Nexus:
+        <p>
+        <p>
+            <a href=""{{reportUrl}}"">Click here to view the report.</a>
+        </p>
+    <td>
+</tr>
+</table>
 ";
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
             var response = await client.SendEmailAsync(msg);
